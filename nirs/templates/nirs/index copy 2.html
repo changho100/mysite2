@@ -1,0 +1,62 @@
+<!doc html>
+    <html>
+
+    {% load static %}
+
+    <head>
+        <script src='{% static "jquery-3.7.1.min.js" %}'></script>
+
+        <script>
+
+            $(document).ready(function () {
+
+                $("button").click(function () {
+
+                    document.getElementById('frm').submit();
+
+
+                                    // html_name = "{% static '{{ html_name }}' %}"
+                //html_name2 = "{% static "+ "{{" + {{html_name}} + "}}" + " %}";
+
+                    // html_name = "{% static '{{ html_name }}' %}"
+                    html_name = "{% static 'sample.html' %}"
+
+                    $("#hz").load(html_name);
+
+                });
+
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+        <div>
+            <h1>Hello World</h1>
+        </div>
+        <div>
+            <div id="hz">
+                <h2>여긴 어디?</h2>
+            </div>
+            <div>
+
+                <form action="/nirs/exe_search_html" method="post" id="frm">
+
+                    {% csrf_token %}
+
+                    <table class="insert_table">
+                        <tr>
+                            <th>html 파일</th>
+                            <td>
+                                <input id="htmlname" name="htmlname" type="text" value="{{htmlname}}" required
+                                    style="width:400px;"><button>조회</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    </html>

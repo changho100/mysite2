@@ -1,0 +1,31 @@
+{% load static %}
+
+<!doc html>
+    <html>
+
+
+    <head>
+        <script src='{% static "js/jquery-3.7.1.min.js" %}'></script>
+
+        <script>
+
+            $(document).ready(function () {
+
+                $("#hz").load("{% static '/sample.html' %}");
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <h1>Hello World</h1>
+        </div>
+        
+        <div id="hz">
+            <h2>여긴 어디?</h2>
+        </div>
+    </body>
+
+    </html>
