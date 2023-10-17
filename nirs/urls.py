@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from os import path
 
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.exe_search_html),
+    path('', views.exe_search_html),
 ]
