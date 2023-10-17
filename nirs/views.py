@@ -16,4 +16,4 @@ def exe_search_html(request):
 
     context = { 'html_name' : html_name}
     
-    return render(request, 'nirs/index.html', context)
+    return render(request, 'nirs/html_view.html', context)
