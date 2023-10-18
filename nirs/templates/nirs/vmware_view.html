@@ -1,0 +1,67 @@
+
+{% load static %}
+
+<!doc html>
+
+<html>
+
+<head>
+    <script src='{% static "js/jquery-3.7.1.min.js" %}'></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            {% if count %}
+
+                $("#html").load("{{ html_file }}");
+            
+            {% endif %}
+
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        function search() {
+            if(document.getElementById('date').value == "") {
+                alert("수집 일자를 입력해주세요.");
+            } else {
+                document.getElementById('frm').submit();
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div>
+        <h1>서버 정보 조회 서비스</h1>
+    </div>
+    <div>
+        <div>
+
+            <form action="/nirs/exe_search_vmware" method="post" id="frm">
+
+                {% csrf_token %}
+
+                <table class="insert_table">
+                    <tr>
+                        <th>html 파일</th>
+                        <td>
+                            <input id="date" name="date" type="text" value="{{date}}" required style="width:400px;">
+                            <button onclick="search()">조회</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+
+            <div id="html"></div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
