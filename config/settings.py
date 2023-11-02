@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'ansible',
+=======
+    'nirs',
+>>>>>>> a95e318a0956d438ab060d079ee4df36b431ab51
 ]
 
 MIDDLEWARE = [
