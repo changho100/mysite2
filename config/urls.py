@@ -18,6 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('nirs.urls')),
-    path('nirs/', include('nirs.urls')),
+    path('', include('ansible.urls')),
+    path('ansible/', include('ansible.urls')),
 ]

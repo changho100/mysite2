@@ -14,9 +14,16 @@
 
                     document.getElementById('frm').submit();
 
+
+                                    // html_name = "{% static '{{ html_name }}' %}"
+                //html_name2 = "{% static "+ "{{" + {{html_name}} + "}}" + " %}";
+
+                    // html_name = "{% static '{{ html_name }}' %}"
+                    html_name = "{% static 'sample.html' %}"
+
+                    $("#hz").load(html_name);
+
                 });
-                
-                $("#hz").load("{% static 'sample.html' %}");
 
             });
 
@@ -34,7 +41,7 @@
             </div>
             <div>
 
-                <form action="/nirs/exe_search_html" method="post" id="frm">
+                <form action="/ansible/exe_search_vmware" method="post" id="frm">
 
                     {% csrf_token %}
 
@@ -43,7 +50,7 @@
                             <th>html 파일</th>
                             <td>
                                 <input id="htmlname" name="htmlname" type="text" value="{{htmlname}}" required
-                                    style="width:400px;"><button onclick="vote()">조회</button>
+                                    style="width:400px;"><button>조회</button>
                             </td>
                         </tr>
                     </table>
