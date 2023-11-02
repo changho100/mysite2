@@ -5,7 +5,7 @@ from datetime import datetime
 # Create your views here.
 def vmware(request):
 
-    date = datetime.today().strftime('%Y-%m-%d')
+    date = '2023-10-18'
 
     context = { 'html_file' : '/static/facts/vmware' + '/' + date + '/esx-all.html', 'date' : date, 'count' : 0, }
 
@@ -17,7 +17,7 @@ def exe_search_vmware(request):
     # html_file = '/static' + '/facts' + '/vmware' + '/' + request['date'] + '/sample.html'
 
     platform = 'vmware'
-    date = request.POST['date']
+    date = '2023-10-18'
     
     context = { 'html_file' : '/static/facts/' + platform + '/' + date + '/esx-all.html', 'date' : date, 'count' : 1, }
     

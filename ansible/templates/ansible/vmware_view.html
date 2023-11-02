@@ -6,19 +6,15 @@
 <html>
 
 <head>
-    <script src='{% static "js/jquery-3.7.1.min.js" %}'></script>
+    <script src='{% static "jquery-3.7.1.min.js" %}'></script>
+    <script src='{% static "jquery.table2excel.min.js" %}'></script>
 
     <script>
 
         $(document).ready(function () {
 
-            {% if count %}
-
-                $("#html").load("{{ html_file }}");
+            $("#html").load("{{ html_file }}");
             
-            {% endif %}
-
-
         });
 
     </script>
@@ -31,6 +27,26 @@
                 document.getElementById('frm').submit();
             }
         }
+
+        $(function() {
+            $(".exportToExcel").click(function(e){
+                var table = $(this).prev('.table2excel');
+                if(table && table.length){
+                    var preserveColors = (table.hasClass('table2excel_with_colors') ? true : false);
+                    $(table).table2excel({
+                        exclude: ".noExl",
+                        name: "Excel Document Name",
+                        filename: "myFileName" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+                        fileext: ".xls",
+                        exclude_img: true,
+                        exclude_links: true,
+                        exclude_inputs: true,
+                        preserveColors: preserveColors
+                    });
+                }
+            });
+            
+        });
     </script>
 
 </head>
@@ -42,11 +58,7 @@
     <div>
         <div>
 
-<<<<<<< HEAD:ansible/templates/ansible/vmware_view.html
-            <form action="/ansible/exe_search_vmware" method="post" id="frm">
-=======
-            <form action="/nirs/exe_search_vmware" method="post" id="frm">
->>>>>>> a95e318a0956d438ab060d079ee4df36b431ab51:nirs/templates/nirs/vmware_view.html
+            <form action="/ansible/exe_search_vmware/" method="post" id="frm">
 
                 {% csrf_token %}
 
@@ -56,13 +68,15 @@
                         <td>
                             <input id="date" name="date" type="text" value="{{date}}" required style="width:400px;">
                             <button onclick="search()">조회</button>
+                            <button name="exportToExcel">엑셀다운</button>
                         </td>
                     </tr>
-
                 </table>
             </form>
 
-            <div id="html"></div>
+            <div id="html">
+                
+            </div>
             
         </div>
     </div>
